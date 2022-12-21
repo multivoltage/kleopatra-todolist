@@ -1,0 +1,53 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["prettier"],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "overrides": [],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["react", "@typescript-eslint", "unused-imports", "simple-import-sort"],
+    "rules": {
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "react/react-in-jsx-scope": "off",
+        // unused import plugin rules
+        "no-unused-vars": "off", // to avoid duplicated warning
+        "@typescript-eslint/no-unused-vars": "off", // to avoid duplicated warning
+        "unused-imports/no-unused-imports": "warn",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
+        // simple import sort plugin rules
+        "simple-import-sort/imports": [
+            "warn",
+            {
+                "groups": [
+                    ["^react", "^next"],
+                    ["^@?\\w"],
+                    ["^"],
+                    ["^\\.", "^\\.\\."],
+                    ["^models"],
+                    ["^\\u0000"]
+                ]
+            }
+        ]
+    }
+}
