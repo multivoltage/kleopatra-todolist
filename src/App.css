@@ -1,3 +1,19 @@
+:root {
+    --base_font_size: 16px;
+    --p1: var(--base_font_size);
+    --m1: var(--base_font_size);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+}
+
 #root {
     max-width: 1280px;
     margin: 0 auto;
@@ -5,4 +21,12 @@
     text-align: center;
     display: flex;
     justify-content: center;
+}
+
+.list {
+    border: 2px solid yellow;
+    padding: var(--p1);
+}
+
+.list__row {
 }

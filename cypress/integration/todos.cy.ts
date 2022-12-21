@@ -6,6 +6,10 @@ describe("Todo list", () => {
     });
 
     it("Visualizzazione della lista dei todo", () => {
-        cy.get('[data-cy="list"]').should("be.visible");
+        cy.get('[data-cy="list"]')
+            .should("be.visible")
+            .within(() => {
+                cy.get('[data-cy="list-row"]').should("be.visible");
+            });
     });
 });
