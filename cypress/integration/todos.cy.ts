@@ -5,5 +5,7 @@ describe("Todo list", () => {
         cy.visit("/");
     });
 
-    it("User can add a todo", () => {});
+    it("Visualizzazione della lista dei todo", () => {
+        cy.get('[data-cy="list"]').should("be.visible");
+    });
 });
