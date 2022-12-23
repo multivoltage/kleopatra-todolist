@@ -9,6 +9,14 @@ todo
 todo
 
 
+## FEATURE
+done - Visualizzazione della lista dei todo
+done - Aggiunta di un nuovo todo (stato “pending”)
+todo - Check di un todo come completato (stato “completed”)
+todo - Uncheck dei todo completati (tornano quindi in stato “pending”)
+todo - Ordinamento automatico dei todo:
+todo - Prima i pending, in ordine di creazione dal più recente al più vecchio. Poi i completed
+
 ---------
 # Setup
 - node >=14

@@ -23,10 +23,8 @@ body {
     justify-content: center;
 }
 
-.list {
-    border: 2px solid yellow;
-    padding: var(--p1);
+/* utilitied */
+.w-full {
+    width: 100%;
 }
-
-.list__row {
-}
+/* end utilities */

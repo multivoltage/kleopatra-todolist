@@ -1,0 +1,10 @@
+.list {
+    border: 2px solid yellow;
+    padding: var(--p1);
+    min-width: 500px;
+}
+
+.list__row {
+    display: flex;
+    justify-content: space-between;
+}
