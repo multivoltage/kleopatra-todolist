@@ -7,4 +7,11 @@
 .list__row {
     display: flex;
     justify-content: space-between;
+    margin: var(--m1);
+}
+
+.list__row__status {
+    border: 1px solid yellow;
+    padding: var(--p1);
+    width: 100px;
 }

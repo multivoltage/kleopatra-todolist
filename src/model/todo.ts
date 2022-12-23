@@ -1,4 +1,6 @@
 export interface ITodo {
     task: string;
-    isPending: boolean;
+    state: TTodoState;
 }
+
+export type TTodoState = "pending" | "completed";

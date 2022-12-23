@@ -10,14 +10,17 @@ function App() {
   const form = useRef<HTMLFormElement>(null)
   const [todos, setTodos] = useState(generateInitialTodos())
 
+  function createNewTodo(task: string) {
+    setTodos((old) => ([...old, {
+      state: "pending",
+      task
+    }]))
+  }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     // todo - find a better types without use react-hook-form or similar
-    const description: string = (e.target as any).newtodo.value
-    setTodos((old) => ([...old, {
-      isPending: true,
-      task: description
-    }]))
+    const task: string = (e.target as any).newtodo.value
+    createNewTodo(task)
     form.current?.reset()
   }
 
