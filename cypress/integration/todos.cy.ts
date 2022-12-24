@@ -37,4 +37,17 @@ describe("Todo list", () => {
         cy.get('[data-cy="list-row--action"]').eq(1).click();
         cy.get('[data-cy="list-row-state-completed"]').its("length").should("eq", 2);
     });
+
+    it("Uncheck dei todo completati (tornano quindi in stato “pending”)", () => {
+        // create a scenario with 2 completed
+        cy.get('[data-cy="list-row--action"]').eq(0).click();
+        cy.get('[data-cy="list-row--action"]').eq(1).click();
+        cy.get('[data-cy="list-row-state-completed"]').its("length").should("eq", 2);
+
+        cy.get('[data-cy="list-row--action"]').eq(1).click();
+        cy.get('[data-cy="list-row-state-completed"]').its("length").should("eq", 1);
+
+        cy.get('[data-cy="list-row--action"]').eq(0).click();
+        cy.get('[data-cy="list-row-state-completed"]').should("not.exist");
+    });
 });

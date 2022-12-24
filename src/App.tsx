@@ -3,7 +3,7 @@ import './styles/App.css'
 import './styles/List.css'
 import './styles/Form.css'
 import { List } from "./components/List";
-import { generateInitialTodos } from "./utils";
+import { generateInitialTodos, getNextStateTask } from "./utils";
 import { ITodo } from "./model/todo";
 
 function App() {
@@ -22,15 +22,15 @@ function App() {
     }]))
   }
 
-  function completeTodo(task: string) {
+  function switchTask(task: string) {
     const newTodos = todos.reduce((acc, currentTask) => {
       const v = currentTask
       if (v.task === task) {
-        v.state = "completed"
+        v.state = getNextStateTask(v.state)
       }
       acc.push(v)
       return acc
-    }, [] as ITodo[])
+    }, [] as Array<ITodo>)
     setTodos(newTodos)
   }
 
@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <List todos={todos} handleAction={completeTodo} />
+      <List todos={todos} handleAction={switchTask} />
 
       <div>
         <form onSubmit={handleSubmit} ref={form} className="form">

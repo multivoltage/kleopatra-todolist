@@ -8,7 +8,7 @@ interface Props {
 export function Row({ todo, handleAction }: Props) {
     const { task, state } = todo
 
-    function handleClickCompleted() {
+    function handleClick() {
         handleAction(todo.task)
     }
 
@@ -18,7 +18,10 @@ export function Row({ todo, handleAction }: Props) {
             <span data-cy={`list-row-state-${state}`} className="list__row__status">
                 {state}
             </span>
-            <button className="list__row__action" data-cy="list-row--action" onClick={handleClickCompleted}>mark completed</button>
+            <button className="list__row__action" data-cy="list-row--action" onClick={handleClick}>
+                {state === "completed" && "mark as pending"}
+                {state === "pending" && "mark as completed"}
+            </button>
         </div>
 
     </div>
