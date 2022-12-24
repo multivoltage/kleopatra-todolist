@@ -1,6 +1,13 @@
-/* form */
-.form-create {
+.form {
     display: flex;
     justify-content: space-between;
+    margin-top: var(--m1);
 }
-/* end form */
+
+.form--tv {
+    padding: calc(var(--p1) / 2);
+}
+
+.form--cta-create {
+    padding: var(--p1);
+}

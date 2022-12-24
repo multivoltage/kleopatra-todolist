@@ -1,7 +1,7 @@
 .list {
     border: 2px solid yellow;
     padding: var(--p1);
-    min-width: 500px;
+    width: 600px;
 }
 
 .list__row {
@@ -12,6 +12,19 @@
 
 .list__row__status {
     border: 1px solid yellow;
-    padding: var(--p1);
+    padding: calc(var(--p1) / 2);
+    display: inline-block;
     width: 100px;
+}
+
+.list__row__actions {
+    flex-shrink: 0;
+}
+
+.list__row__action {
+    margin-left: var(--p1);
+}
+
+.list__row__task {
+    margin-right: var(--m1);
 }

@@ -28,4 +28,13 @@ describe("Todo list", () => {
                 cy.get('[data-cy="list-row"]').last().contains("pending");
             });
     });
+
+    it("Check di un todo come completato (stato “completed”)", () => {
+        cy.get('[data-cy="list-row-state-completed"]').should("not.exist");
+
+        cy.get('[data-cy="list-row--action"]').eq(0).click();
+        cy.get('[data-cy="list-row-state-completed"]').its("length").should("eq", 1);
+        cy.get('[data-cy="list-row--action"]').eq(1).click();
+        cy.get('[data-cy="list-row-state-completed"]').its("length").should("eq", 2);
+    });
 });
