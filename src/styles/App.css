@@ -2,6 +2,8 @@
     --base_font_size: 16px;
     --p1: var(--base_font_size);
     --m1: var(--base_font_size);
+    --color-pending: #b30000;
+    --color-completed: #00b300;
 }
 
 * {

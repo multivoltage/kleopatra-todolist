@@ -1,31 +1,38 @@
 .list {
     border: 2px solid yellow;
-    padding: var(--p1);
-    width: 700px;
+    padding: calc(var(--p1) / 2);
+    width: 900px;
+    text-align: left;
 }
 
 .list__row {
-    display: flex;
-    justify-content: space-between;
     margin: var(--m1);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 0px;
 }
 
-.list__row__status {
-    border: 1px solid yellow;
+.list__row__state {
+    text-align: center;
     padding: calc(var(--p1) / 2);
     display: inline-block;
     width: 100px;
+    border-radius: 8px;
+    transition: background 200ms ease-in-out;
+}
+.list__row__state--pending {
+    background: var(--color-pending);
+}
+.list__row__state--completed {
+    background: var(--color-completed);
 }
 
-.list__row__actions {
-    flex-shrink: 0;
+.list__row__status-- .list__row__actions {
+    display: flex;
 }
 
 .list__row__action {
-    margin-left: var(--p1);
-    width: 180px;
-}
-
-.list__row__task {
-    margin-right: var(--m1);
+    width: 100%;
 }

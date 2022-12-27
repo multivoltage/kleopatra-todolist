@@ -3,7 +3,7 @@ import './styles/App.css'
 import './styles/List.css'
 import './styles/Form.css'
 import { List } from "./components/List";
-import { generateInitialTodos, getNextStateTask } from "./utils";
+import { buildNewTodo, buildNextTodo, generateInitialTodos, getNextStateTask } from "./utils";
 import { ITodo } from "./model/todo";
 
 function App() {
@@ -16,21 +16,17 @@ function App() {
       alert('already added')
       return
     }
-    setTodos((old) => ([...old, {
-      state: "pending",
-      task
-    }]))
+    const newTodo = buildNewTodo(task)
+    setTodos((old) => ([...old, newTodo]))
   }
 
   function switchTask(task: string) {
-    const newTodos = todos.reduce((acc, currentTask) => {
-      const v = currentTask
-      if (v.task === task) {
-        v.state = getNextStateTask(v.state)
+    const newTodos = todos.map(current => {
+      if (current.task === task) {
+        return buildNextTodo(current)
       }
-      acc.push(v)
-      return acc
-    }, [] as Array<ITodo>)
+      return current
+    })
     setTodos(newTodos)
   }
 
