@@ -1,10 +1,10 @@
-import { ITodo } from "./model/todo";
+import { ITodo, TTodoState } from "./model/todo";
 
 /**
  * used by cypress but can be a Promise and fetch data from web
  */
 export function generateInitialTodos(): Array<ITodo> {
-    return [buildNewTodo("diventare ricco"), buildNewTodo("compare un areoporto")];
+    return [buildNewTodo("diventare ricco"), buildNewTodo("comprare un areoporto")];
 }
 
 export function buildNewTodo(task: string): ITodo {
@@ -44,4 +44,19 @@ export function formatTime(millis: number) {
         minute: "2-digit",
         second: "2-digit",
     });
+}
+
+function sortByCreatedDate(prev: ITodo, next: ITodo): number {
+    return prev.created_at < next.created_at ? 1 : -1;
+}
+
+// Prima i pending, in ordine di creazione dal più recente al più vecchio. Poi i completed (scelto stesso ordinamento di creazione)
+export function sortList(todos: Array<ITodo>): Array<ITodo> {
+    const pendings = todos.filter((t) => t.state === "pending");
+    const completed = todos.filter((t) => t.state === "completed");
+
+    const sortedPendings = [...pendings].sort(sortByCreatedDate);
+    const sortedCompleted = [...completed].sort(sortByCreatedDate);
+
+    return [...sortedPendings, ...sortedCompleted];
 }

@@ -44,7 +44,7 @@ function App() {
 
       <div>
         <form onSubmit={handleSubmit} ref={form} className="form">
-          <input type="text" required name="newtodo" className="form--tv w-full" data-cy="input-new-task" />
+          <input type="text" required name="newtodo" minLength={3} className="form--tv w-full" data-cy="input-new-task" />
           <input type="submit" value="ADD NEW" className="form--cta-create" data-cy="btn-add" />
         </form>
       </div>

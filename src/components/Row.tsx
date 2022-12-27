@@ -14,8 +14,6 @@ export function Row({ todo, handleAction }: Props) {
         handleAction(todo.task)
     }
 
-    console.log('render row', todo.task)
-
     return <div key={task} data-cy="list-row" className="list__row">
         <span className="list__row__task" data-cy="list-row-task">{task}</span>
         <span className="list__row__date">
