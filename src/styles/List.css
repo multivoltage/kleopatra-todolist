@@ -36,3 +36,7 @@
 .list__row__action {
     width: 100%;
 }
+
+.list__row__task {
+    overflow: hidden;
+}

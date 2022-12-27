@@ -7,7 +7,7 @@ interface Props {
     handleAction: (task: string) => void
 }
 
-export function Row({ todo, handleAction }: Props) {
+export const Row = React.memo(({ todo, handleAction }: Props) => {
     const { task, state, created_at, completed_at } = todo
 
     function handleClick() {
@@ -30,7 +30,6 @@ export function Row({ todo, handleAction }: Props) {
         </div>
 
 
-
         <div>
             <button className="list__row__action" data-cy="list-row--action" onClick={handleClick}>
                 {state === "completed" && "pending"}
@@ -38,6 +37,11 @@ export function Row({ todo, handleAction }: Props) {
             </button>
         </div>
 
-
     </div>
-}
+}, (prev, next) => {
+    // re-render this row only when state change since todo is a complex object
+    if (prev.todo.state === next.todo.state) {
+        return true
+    }
+    return false
+})

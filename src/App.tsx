@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import './styles/App.css'
 import './styles/List.css'
 import './styles/Form.css'
@@ -21,13 +21,15 @@ function App() {
   }
 
   function switchTask(task: string) {
-    const newTodos = todos.map(current => {
-      if (current.task === task) {
-        return buildNextTodo(current)
-      }
-      return current
+    setTodos((old) => {
+      const newTodos = old.map(current => {
+        if (current.task === task) {
+          return buildNextTodo(current)
+        }
+        return current
+      })
+      return newTodos
     })
-    setTodos(newTodos)
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
